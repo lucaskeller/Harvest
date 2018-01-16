@@ -52,7 +52,11 @@ gulp.task('images-deploy', function() {
 //compiling our Javascripts
 gulp.task('scripts', function() {
     //this is where our dev JS scripts are
-    return gulp.src(['app/scripts/src/_includes/**/*.js', 'app/scripts/src/**/*.js'])
+    return gulp.src(['node_modules/tether/dist/js/tether.min.js', 
+                      'node_modules/jquery/dist/jquery.min.js', 
+                      'node_modules/bootstrap/dist/js/bootstrap.min.js', 
+                      'app/scripts/src/_includes/**/*.js', 
+                      'app/scripts/src/**/*.js'])
                 //prevent pipe breaking caused by errors from gulp plugins
                 .pipe(plumber())
                 //this is the filename of the compressed version of our JS
@@ -68,7 +72,11 @@ gulp.task('scripts', function() {
 //compiling our Javascripts for deployment
 gulp.task('scripts-deploy', function() {
     //this is where our dev JS scripts are
-    return gulp.src(['app/scripts/src/_includes/**/*.js', 'app/scripts/src/**/*.js'])
+    return gulp.src(['node_modules/tether/dist/js/tether.min.js',
+                      'node_modules/jquery/dist/jquery.min.js', 
+                      'node_modules/bootstrap/dist/js/bootstrap.min.js', 
+                      'app/scripts/src/_includes/**/*.js', 
+                      'app/scripts/src/**/*.js'])
                 //prevent pipe breaking caused by errors from gulp plugins
                 .pipe(plumber())
                 //this is the filename of the compressed version of our JS
@@ -82,7 +90,7 @@ gulp.task('scripts-deploy', function() {
 //compiling our SCSS files
 gulp.task('styles', function() {
     //the initializer / master SCSS file, which will just be a file that imports everything
-    return gulp.src('app/styles/scss/init.scss')
+    return gulp.src(['node_modules/tether/dist/css/tether.min.css', 'node_modules/bootstrap/scss/bootstrap.scss', 'app/styles/scss/init.scss'])
                 //prevent pipe breaking caused by errors from gulp plugins
                 .pipe(plumber({
                   errorHandler: function (err) {
@@ -118,7 +126,7 @@ gulp.task('styles', function() {
 //compiling our SCSS files for deployment
 gulp.task('styles-deploy', function() {
     //the initializer / master SCSS file, which will just be a file that imports everything
-    return gulp.src('app/styles/scss/init.scss')
+    return gulp.src(['node_modules/tether/dist/css/tether.min.css', 'node_modules/bootstrap/scss/bootstrap.scss', 'app/styles/scss/init.scss'])
                 .pipe(plumber())
                 //include SCSS includes folder
                 .pipe(sass({
